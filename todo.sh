@@ -68,6 +68,8 @@ create_task() {
     read -p "Enter task due time (optional): " due_time
     echo "$title|$description|$location|$due_date|$due_time|pending" >> todo.txt
     echo "Task created successfully."
+    echo "Task data is stored in todo.txt" >> todo.txt
+}
 }
 # Function to update a task
 update_task() {
