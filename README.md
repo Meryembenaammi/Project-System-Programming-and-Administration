@@ -1,12 +1,12 @@
 # Project-System-Programming-and-Administration
 todo project
 
-# Description
+### Description
 This project is a Bash script for managing tasks. It allows you to create, update, delete, display, and list tasks, as well as search for tasks by title.
 
-# Design Choices
+### Design Choices
 
-# Data Structure
+#### Data Structure
 Tasks are stored in a text file (`todo.txt`) with the following information separated by pipes (|):
 - Title
 - Description
@@ -17,7 +17,7 @@ Tasks are stored in a text file (`todo.txt`) with the following information sepa
 
 Example line in "todo.txt" : Title|Description|Location|YYYY-MM-DD|HH:MM|pending  
 
-# Code Organization
+#### Code Organization
 
 The Bash script is organized into several functions:
 - display_help: Displays help on using the script.
@@ -32,14 +32,14 @@ The Bash script is organized into several functions:
 # Script Functionality
 When the script is executed without arguments, it lists tasks for the current date. Otherwise, it takes an argument to specify the action to perform (create, update, delete, show, list, search, help, guide).
 
-# Usage
+### Usage
 
-# Prerequisites
+#### Prerequisites
 - Bash (for Windows users, you can use Git Bash )
 - A text editor (such as Notepad )
 
 
-# How to Run the Program
+##### How to Run the Program
 
 To run the program, follow these steps:
 
@@ -64,7 +64,7 @@ To run the program, follow these steps:
 3. Follow the prompts and instructions provided by the script to perform the desired action.
 
 
-# Instructions
+#### Instructions
 
 1. Clone the repository:
     
