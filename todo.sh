@@ -13,6 +13,7 @@ display_help() {
     echo "  help    - Display this help message"
     echo "If no action is provided, tasks for today will be listed."
 }
+
 # Function to display additional usage guide
 display_usage_guide() {
     echo " Usage Guide:"
@@ -35,7 +36,7 @@ display_usage_guide() {
     echo "   This option displays all information about a specific task by entering its unique identifier."
     echo
     echo "5. List tasks for a specific date:"
-echo "   ./todo.sh list"
+    echo "   ./todo.sh list"
     echo "   This option lists all tasks for a given date by providing the date in the format YYYY-MM-DD."
     echo
     echo "6. Search for a task by title:"
@@ -49,7 +50,9 @@ echo "   ./todo.sh list"
     echo "8. Display additional guide:"
     echo "   ./todo.sh guide"
     echo "   This option displays an additional guide, providing more detailed information on using specific features of the script."
-}# Function to create a new task
+}
+
+# Function to create a new task
 create_task() {
     read -p "Enter task title required: " title
     
@@ -68,9 +71,9 @@ create_task() {
     read -p "Enter task due time (optional): " due_time
     echo "$title|$description|$location|$due_date|$due_time|pending" >> todo.txt
     echo "Task created successfully."
-    echo "Task data is stored in todo.txt" >> todo.txt
+    echo "Task data is stored in todo.txt"
 }
-}
+
 # Function to update a task
 update_task() {
     read -p "Enter the unique identifier of the task to update: " identifier
@@ -85,14 +88,14 @@ update_task() {
             return 1
         fi
         read -p "Enter updated due time (press enter to keep current): " updated_due_time
-        updated_task="$identifier|${updated_title:-$(grep "^$identifier" todo.txt | cut -d '|' -f 2)}|${updated_description:-$(grep "^$identifier" todo.txt |$
+        updated_task="$identifier|${updated_title:-$(grep "^$identifier" todo.txt | cut -d '|' -f 2)}|${updated_description:-$(grep "^$identifier" todo.txt | cut -d '|' -f 3)}|${updated_location:-$(grep "^$identifier" todo.txt | cut -d '|' -f 4)}|${updated_due_date:-$(grep "^$identifier" todo.txt | cut -d '|' -f 5)}|${updated_due_time:-$(grep "^$identifier" todo.txt | cut -d '|' -f 6)}"
         # Update the task in storage
         sed -i "/^$identifier/c\\$updated_task" todo.txt
         echo "Task updated successfully."
     else
         echo "Error: Task with identifier '$identifier' not found."
         return 1
-  fi
+    fi
 }
 
 # Function to delete a task
@@ -106,6 +109,7 @@ delete_task() {
         return 1
     fi
 }
+
 # Function to show all information about a task
 show_task() {
     read -p "Enter the unique identifier of the task to show: " identifier
@@ -116,6 +120,7 @@ show_task() {
         return 1
     fi
 }
+
 # Function to list tasks of a given day
 list_tasks() {
     read -p "Enter the date (YYYY-MM-DD) to list tasks for: " date
@@ -140,7 +145,8 @@ search_task() {
         return 1
     fi
 }
-# Main 
+
+# Main
 if [ $# -eq 0 ]; then
     today=$(date +%Y-%m-%d)
     echo "Tasks for $today:"
@@ -165,7 +171,7 @@ else
         search)
             search_task
             ;;
- help)
+        help)
             display_help
             ;;
         guide)
@@ -177,3 +183,4 @@ else
             ;;
     esac
 fi
+
